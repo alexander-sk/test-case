@@ -2,7 +2,8 @@ export function required(rawData, rule) {
   let result = true;
 
   if (rule == true) {
-    if (rawData == "" || rawData == undefined) result = false;
+    if (rawData == "" || rawData == undefined || Number.isNaN(rawData))
+      result = false;
   }
 
   return result;
