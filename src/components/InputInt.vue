@@ -5,6 +5,7 @@
       placeholder="..."
       :value="value"
       @change.native="$emit('input', parseInt($event.target.value));"
+      :class="{ error: error }"
     ></el-input-number>
   </el-form-item>
 </template>
@@ -14,7 +15,8 @@ export default {
   name: "InputInt",
   props: {
     label: String,
-    value: Number
+    value: Number,
+    error: Boolean
   },
   data() {
     return {};

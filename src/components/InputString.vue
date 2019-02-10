@@ -4,6 +4,7 @@
       placeholder="..."
       :value="value"
       @input.native="$emit('input', $event.target.value);"
+      :class="{ error: error }"
     ></el-input>
   </el-form-item>
 </template>
@@ -13,7 +14,8 @@ export default {
   name: "InputString",
   props: {
     label: String,
-    value: String
+    value: String,
+    error: Boolean
   },
   data() {
     return {};

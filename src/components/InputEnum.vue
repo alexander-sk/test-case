@@ -1,6 +1,10 @@
 <template>
   <el-form-item :label="label">
-    <el-select :value="value" @change="$emit('change', $event);">
+    <el-select
+      :value="value"
+      @change="$emit('change', $event);"
+      :class="{ error: error }"
+    >
       <el-option
         v-for="item in enumData"
         :key="item.value"
@@ -25,7 +29,8 @@ export default {
   props: {
     label: String,
     enumData: Array,
-    value: Number
+    value: Number,
+    error: Boolean
   },
   data() {
     return {};

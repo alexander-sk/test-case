@@ -5,6 +5,7 @@
       @input="$emit('input', $event);"
       type="date"
       placeholder="..."
+      :class="{ error: error }"
     >
     </el-date-picker>
   </el-form-item>
@@ -15,7 +16,8 @@ export default {
   name: "InputDate",
   props: {
     label: String,
-    value: Date
+    value: Date,
+    error: Boolean
   },
   data() {
     return {};

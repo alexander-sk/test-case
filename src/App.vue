@@ -23,6 +23,7 @@
             :key="attribute.code"
             :label="attribute.title"
             :enumData="calcEnums[attribute.enumType]"
+            :error="errorTriggers[attribute.code]"
             v-model="formData[attribute.code]"
           ></component>
           <el-form-item>
@@ -60,12 +61,31 @@ export default {
   data() {
     return {
       formData: {},
-      calcEnums: {}
+      calcEnums: {},
+      errorTriggers: {}
     };
   },
   methods: {
     validateForm() {
-      console.log(this.formData);
+      let isOk = true;
+
+      for (let attribute of this.cfg.attributes) {
+        for (let item in attribute.validation) {
+          let isRuleCheckPassed = validate[item](
+            this.formData[attribute.code],
+            attribute.validation[item]
+          );
+          this.$set(this.errorTriggers, attribute.code, false);
+
+          if (!isRuleCheckPassed) {
+            isOk = false;
+            this.$set(this.errorTriggers, attribute.code, true);
+            break;
+          }
+        }
+      }
+
+      if (isOk) console.log(this.formData);
     }
   },
   created: function() {
@@ -102,4 +122,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.error input {
+  box-shadow: 0px 0px 2px 1px rgba(252, 5, 5, 1);
+}
+</style>

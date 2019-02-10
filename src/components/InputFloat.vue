@@ -7,6 +7,7 @@
       @change.native="$emit('input', parseFloat($event.target.value));"
       :precision="2"
       :step="0.1"
+      :class="{ error: error }"
     ></el-input-number>
   </el-form-item>
 </template>
@@ -16,7 +17,8 @@ export default {
   name: "InputFloat",
   props: {
     label: String,
-    value: Number
+    value: Number,
+    error: Boolean
   },
   data() {
     return {};
