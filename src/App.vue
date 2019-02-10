@@ -41,6 +41,7 @@ import InputString from "./components/InputString";
 import InputDate from "./components/InputDate";
 import InputBoolean from "./components/InputBoolean";
 import InputEnum from "./components/InputEnum";
+import * as validate from "./validators";
 
 export default {
   name: "App",
