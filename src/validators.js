@@ -29,21 +29,21 @@ export function email(rawData, rule) {
 }
 
 export function min(rawData, rule) {
-  if (rawData == undefined) return true;
+  if (rawData == undefined || Number.isNaN(rawData)) return true;
   return rawData >= rule;
 }
 
 export function max(rawData, rule) {
-  if (rawData == undefined) return true;
+  if (rawData == undefined || Number.isNaN(rawData)) return true;
   return rawData <= rule;
 }
 
 export function minlength(rawData, rule) {
-  if (rawData == undefined) return true;
+  if (rawData == undefined || rawData == "") return true;
   return rawData.length >= rule;
 }
 
 export function maxlength(rawData, rule) {
-  if (rawData == undefined) return true;
+  if (rawData == undefined || rawData == "") return true;
   return rawData.length <= rule;
 }
