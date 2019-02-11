@@ -2,7 +2,7 @@
   <el-form-item :label="label">
     <el-date-picker
       :value="value"
-      @input="$emit('input', $event);"
+      @input="$emit('input', $event.toISOString());"
       type="date"
       placeholder="..."
       :class="{ error: error }"
@@ -16,7 +16,7 @@ export default {
   name: "InputDate",
   props: {
     label: String,
-    value: Date,
+    value: String,
     error: Boolean
   },
   data() {
