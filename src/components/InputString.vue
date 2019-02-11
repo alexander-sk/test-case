@@ -1,16 +1,11 @@
 <template>
   <el-form-item :label="label">
     <el-input
-      :type="multi ? 'textarea' : ''"
+      :type="multi ? 'textarea' : 'text'"
       placeholder="..."
       :value="value"
-      @input.native="
-        $emit(
-          'input',
-          multi
-            ? $event.target.value.split(',').map(s => s.trim())
-            : $event.target.value
-        );
+      @input="
+        $emit('input', multi ? $event.split(',').map(s => s.trim()) : $event);
       "
       :class="{ error: error }"
     ></el-input>

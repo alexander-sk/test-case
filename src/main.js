@@ -23,6 +23,7 @@ const enums = JSON.parse(
 
 Vue.use(ElementUI, { locale });
 Vue.config.productionTip = false;
+Vue.config.warnHandler = function(msg, vm, trace) {};
 
 /* eslint-disable no-new */
 new Vue({
