@@ -11,7 +11,15 @@ export function required(rawData, rule) {
 
 export function pattern(rawData, rule) {
   if (rawData == undefined) return false;
-  return rawData.search(rule) != -1;
+  if (Array.isArray(rawData)) {
+    for (let item of rawData) {
+      if (item.search(rule) != -1) continue;
+      else return false;
+    }
+    return true;
+  } else {
+    return rawData.search(rule) != -1;
+  }
 }
 
 export function email(rawData, rule) {

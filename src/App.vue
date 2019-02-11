@@ -24,10 +24,16 @@
             :label="attribute.title"
             :enumData="calcEnums[attribute.enumType]"
             :error="errorTriggers[attribute.code]"
+            :multi="attribute.multiple"
             v-model="formData[attribute.code]"
           ></component>
           <el-form-item>
-            <el-button type="primary" style="float: right;" @click="validateForm">Зберегти</el-button>
+            <el-button
+              type="primary"
+              style="float: right;"
+              @click="validateForm"
+              >Зберегти</el-button
+            >
           </el-form-item>
         </el-form>
       </el-card>
@@ -123,7 +129,8 @@ export default {
 </script>
 
 <style>
-.error input {
+.error input,
+.error textarea {
   box-shadow: 0px 0px 2px 1px rgba(252, 5, 5, 1);
 }
 </style>

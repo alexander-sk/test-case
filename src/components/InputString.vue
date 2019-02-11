@@ -1,9 +1,17 @@
 <template>
   <el-form-item :label="label">
     <el-input
+      :type="multi ? 'textarea' : ''"
       placeholder="..."
       :value="value"
-      @input.native="$emit('input', $event.target.value);"
+      @input.native="
+        $emit(
+          'input',
+          multi
+            ? $event.target.value.split(',').map(s => s.trim())
+            : $event.target.value
+        );
+      "
       :class="{ error: error }"
     ></el-input>
   </el-form-item>
@@ -14,8 +22,9 @@ export default {
   name: "InputString",
   props: {
     label: String,
-    value: String,
-    error: Boolean
+    value: [Array, String],
+    error: Boolean,
+    multi: Boolean
   },
   data() {
     return {};
