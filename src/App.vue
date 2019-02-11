@@ -27,7 +27,7 @@
             v-model="formData[attribute.code]"
           ></component>
           <el-form-item>
-            <el-button type="primary" @click="validateForm">Зберегти</el-button>
+            <el-button type="primary" style="float: right;" @click="validateForm">Зберегти</el-button>
           </el-form-item>
         </el-form>
       </el-card>
