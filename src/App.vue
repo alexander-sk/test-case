@@ -91,7 +91,7 @@ export default {
         }
       }
 
-      if (isOk) console.log(this.formData);
+      if (isOk) console.log(JSON.stringify(this.formData));
     }
   },
   created: function() {
