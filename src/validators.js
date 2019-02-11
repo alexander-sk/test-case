@@ -11,7 +11,7 @@ export function required(rawData, rule) {
 
 export function pattern(rawData, rule) {
   if (rawData == undefined) return false;
-  if (rawData !== undefined) return rawData.search(pattern) != -1;
+  return rawData.search(rule) != -1;
 }
 
 export function email(rawData, rule) {
